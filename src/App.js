@@ -1,9 +1,11 @@
-import { BrowserRouter as Router, Routes, Route, json } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navigation from './components/Navigation';
 
 import { Cart, Home, ProductsPage, SingleProduct } from './pages'
 import { CartContext } from './CartContext'
 import { useEffect, useState } from 'react';
+import { getCart, storeCart} from './helpers'
+
 
 function App() {
     
@@ -11,12 +13,11 @@ function App() {
     const [cart, setCart ] = useState({});
 
     useEffect(() => {
-        const cart = window.localStorage.getItem('cart');
-        setCart(JSON.parse(cart));
+        getCart().then( cart => setCart(JSON.parse(cart)));
     },[]);
 
-    useEffect(() => {
-        window.localStorage.setItem('cart', JSON.stringify(cart) );
+    useEffect(() => { 
+        storeCart(JSON.stringify(cart));
     },[cart])
 
     return (
