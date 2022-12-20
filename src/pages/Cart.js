@@ -121,7 +121,7 @@ const Cart = () => {
                         <li className="mb-12" key={`${item._id}-${item.chosenSize}`}>
                         <div className="flex items-center justify-between">
                         <div className="flex items-center">
-                        <img className="h-16" src="/images/peproni.png" alt="peproni"/>
+                        <img className="h-16" src={item.image} alt="peproni"/>
                         <span className="font-bold ml-4 w-48"> {item.name}
                         <span className="bg-yellow-500 px-2 py-2 ml-2 mr-2 rounded-full leading-none"> {item.chosenSize} </span>
                         </span>
